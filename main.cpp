@@ -427,7 +427,7 @@ int main(int argc,char* argv[])
     cout<<ss<<endl;
     return 0;
 }*/
-#include <stdio.h>
+/*#include <stdio.h>
 #include <string>
 #include <iostream>
 using namespace std;
@@ -447,6 +447,48 @@ int main(int argc,char* argv[])
     int x,y,z;
     sscanf("4,5$6","%d,%d,%d",&x,&y,&z);
     cout<<x<<" "<<y<<" "<<endl;
+    return 0;
+}*/
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <stdio.h>
+using namespace std;
+
+//C++方法：将数值转换为string
+string convertToString(double x)
+{
+    ostringstream o;
+    if(o<<x)
+        return o.str();
+    return "conversion error";  //if error
+}
+//C++方法：将string转换为数值
+double convertFromString(const string &s)
+{
+    istringstream i(s);
+    double x;
+    if(i>>x)
+        return x;
+    return 0.0;//if error
+}
+int main(int argc,char* argv[])
+{
+    //将数值转换为string的第一种方法：c方法
+    char b[10];
+    string a;
+    sprintf(b,"%d",1975);
+    a=b;
+    cout<<a<<endl;
+    //将数值转换为string的第二种方法：C++方法
+    string cc = convertToString(1976);
+    cout<<cc<<endl;
+
+    //将string转换为数值的方法：C++方法
+    string dd="2006";
+    int p = convertFromString(dd)+2;
+    cout<<p<<endl;
+
     return 0;
 }
 
